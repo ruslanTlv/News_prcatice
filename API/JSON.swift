@@ -1,5 +1,5 @@
 //
-//  PostJson.swift
+//  JSON.swift
 //  API
 //
 //  Created by Ruslan on 27/06/22.
@@ -7,10 +7,9 @@
 
 import Foundation
 
-struct JSON {
-    func JSON(arr: @escaping ([Characters]) -> ()) {
-        
-        let url = "https://api.opendota.com/api/heroStats"
+struct Json {
+    func decodeJSON(arr: @escaping ([Articles]) -> ()) {
+        let url = "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=6d252456c2774883bf85951e98f351af"
         
         guard let url = URL(string: url) else {return}
         
@@ -21,10 +20,12 @@ struct JSON {
             
             guard let data = data else {return}
 
-            do {
+            do{
                 let decoder = JSONDecoder()
-                let characters = try decoder.decode([Characters].self, from: data)
-                arr(characters)
+                let news = try decoder.decode(News.self, from: data)
+                arr(news.articles)
+                
+                
             } catch {
                 print(error.localizedDescription)
             }

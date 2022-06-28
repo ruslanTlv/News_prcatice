@@ -2,43 +2,52 @@
 //  CustomTableViewCell.swift
 //  API
 //
-//  Created by Ruslan on 27/06/22.
+//  Created by Ruslan on 28/06/22.
 //
 
 import UIKit
 
 class CustomTableViewCell: UITableViewCell {
 
-   static let ID = "CustomTableViewCell"
+    static let id = "CustomTableViewCell"
     
-    var characters: Characters? {
-        didSet{
-            guard let characters = characters else {return}
-            imageCharacter.image = UIImage(named: characters.img)
-            characterName.text = characters.localized_name
+    var articles: Articles? {
+        didSet {
+            guard let articles = articles else {return}
+            newsTitle.text = articles.title
+            newsContent.text = articles.content
         }
     }
     
-    let imageCharacter: UIImageView = {
-        let pic = UIImageView()
-        pic.clipsToBounds = true
-        pic.layer.cornerRadius = 60
-        pic.layer.borderWidth = 4
-        pic.layer.borderColor = UIColor.systemGreen.cgColor
-        return pic
+    let newsImage: UIImageView = {
+        let image = UIImageView()
+        image.clipsToBounds = true
+        image.contentMode = .scaleAspectFill
+        
+        return image
     }()
     
-    let characterName: UILabel = {
+    let newsTitle: UILabel = {
         let label = UILabel()
-        label.textColor = .link
-        label.font = UIFont(name: "Futura", size: 25)
+        label.textColor = .black
+        label.font = UIFont(name: "Futura", size: 14)
+        return label
+    }()
+    
+    let newsContent: UILabel = {
+        let label = UILabel()
+        label.textColor = .lightGray
+        label.textAlignment = .left
+        label.numberOfLines = 2
+        label.font = UIFont.systemFont(ofSize: 12)
         return label
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.addSubview(imageCharacter)
-        contentView.addSubview(characterName)
+        contentView.addSubview(newsImage)
+        contentView.addSubview(newsTitle)
+        contentView.addSubview(newsContent)
     }
     
     required init?(coder: NSCoder) {
@@ -48,15 +57,23 @@ class CustomTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        imageCharacter.snp.makeConstraints { make in
+        newsImage.snp.makeConstraints { make in
             make.centerY.equalTo(contentView)
-            make.left.equalTo(contentView).inset(15)
-            make.width.height.equalTo(120)
+            make.right.equalTo(contentView).inset(10)
+            make.width.equalTo(150)
+            make.height.equalTo(130)
         }
         
-        characterName.snp.makeConstraints { make in
-            make.centerY.equalTo(contentView)
-            make.left.equalTo(imageCharacter.snp_rightMargin).inset(-25)
+        newsTitle.snp.makeConstraints { make in
+            make.top.equalTo(contentView).inset(50)
+            make.right.equalTo(newsImage.snp_leftMargin).inset(-30)
+            make.left.equalTo(contentView).inset(10)
+        }
+        
+        newsContent.snp.makeConstraints { make in
+            make.top.equalTo(newsTitle.snp_bottomMargin).inset(-15)
+            make.right.equalTo(newsImage.snp_leftMargin).inset(-35)
+            make.left.equalTo(contentView).inset(10)
         }
     }
 }

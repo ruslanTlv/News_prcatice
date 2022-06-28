@@ -12,9 +12,10 @@
 		44755080286A1806002AAD23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4475507F286A1806002AAD23 /* ViewController.swift */; };
 		44755085286A1807002AAD23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44755084286A1807002AAD23 /* Assets.xcassets */; };
 		44755088286A1807002AAD23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44755086286A1807002AAD23 /* LaunchScreen.storyboard */; };
-		44755090286A1A19002AAD23 /* PostJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4475508F286A1A19002AAD23 /* PostJson.swift */; };
-		44755092286A2A8E002AAD23 /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44755091286A2A8E002AAD23 /* Characters.swift */; };
-		44755094286A2D0F002AAD23 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44755093286A2D0F002AAD23 /* CustomTableViewCell.swift */; };
+		44755096286A4F6D002AAD23 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44755095286A4F6D002AAD23 /* News.swift */; };
+		44755098286A5075002AAD23 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44755097286A5075002AAD23 /* JSON.swift */; };
+		4475509A286A5223002AAD23 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44755099286A5223002AAD23 /* CustomTableViewCell.swift */; };
+		4475509E286AD761002AAD23 /* SpacificNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4475509D286AD761002AAD23 /* SpacificNewsViewController.swift */; };
 		96DDB5268514A2F39C54A24C /* Pods_API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75FB9B589D112804F1024D2C /* Pods_API.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,9 +27,10 @@
 		44755084286A1807002AAD23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44755087286A1807002AAD23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		44755089286A1807002AAD23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4475508F286A1A19002AAD23 /* PostJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostJson.swift; sourceTree = "<group>"; };
-		44755091286A2A8E002AAD23 /* Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
-		44755093286A2D0F002AAD23 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		44755095286A4F6D002AAD23 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		44755097286A5075002AAD23 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		44755099286A5223002AAD23 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		4475509D286AD761002AAD23 /* SpacificNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacificNewsViewController.swift; sourceTree = "<group>"; };
 		75FB9B589D112804F1024D2C /* Pods_API.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_API.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A285D280EAA8DBF105859536 /* Pods-API.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-API.debug.xcconfig"; path = "Target Support Files/Pods-API/Pods-API.debug.xcconfig"; sourceTree = "<group>"; };
 		FB8FFEE763A16A4351240836 /* Pods-API.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-API.release.xcconfig"; path = "Target Support Files/Pods-API/Pods-API.release.xcconfig"; sourceTree = "<group>"; };
@@ -69,10 +71,11 @@
 			children = (
 				4475507B286A1806002AAD23 /* AppDelegate.swift */,
 				4475507D286A1806002AAD23 /* SceneDelegate.swift */,
-				4475508F286A1A19002AAD23 /* PostJson.swift */,
 				4475507F286A1806002AAD23 /* ViewController.swift */,
-				44755093286A2D0F002AAD23 /* CustomTableViewCell.swift */,
-				44755091286A2A8E002AAD23 /* Characters.swift */,
+				44755099286A5223002AAD23 /* CustomTableViewCell.swift */,
+				4475509D286AD761002AAD23 /* SpacificNewsViewController.swift */,
+				44755095286A4F6D002AAD23 /* News.swift */,
+				44755097286A5075002AAD23 /* JSON.swift */,
 				44755084286A1807002AAD23 /* Assets.xcassets */,
 				44755086286A1807002AAD23 /* LaunchScreen.storyboard */,
 				44755089286A1807002AAD23 /* Info.plist */,
@@ -211,12 +214,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44755094286A2D0F002AAD23 /* CustomTableViewCell.swift in Sources */,
+				4475509A286A5223002AAD23 /* CustomTableViewCell.swift in Sources */,
 				44755080286A1806002AAD23 /* ViewController.swift in Sources */,
-				44755090286A1A19002AAD23 /* PostJson.swift in Sources */,
+				4475509E286AD761002AAD23 /* SpacificNewsViewController.swift in Sources */,
+				44755098286A5075002AAD23 /* JSON.swift in Sources */,
 				4475507C286A1806002AAD23 /* AppDelegate.swift in Sources */,
+				44755096286A4F6D002AAD23 /* News.swift in Sources */,
 				4475507E286A1806002AAD23 /* SceneDelegate.swift in Sources */,
-				44755092286A2A8E002AAD23 /* Characters.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
