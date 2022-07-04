@@ -24,10 +24,8 @@ struct Json {
                 let decoder = JSONDecoder()
                 let news = try decoder.decode(News.self, from: data)
                 arr(news.articles)
-                
-                
             } catch {
-                print(error.localizedDescription)
+                print("Error: \(error.localizedDescription)")
             }
         } .resume()
     }
