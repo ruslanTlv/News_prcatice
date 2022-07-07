@@ -79,7 +79,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.id, for: indexPath) as! CustomTableViewCell
         cell.articles = allNewsArray[indexPath.row]
-        guard let url = URL(string: allNewsArray[indexPath.row].urlToImage) else {return UITableViewCell()}
+        guard let url = URL(string: allNewsArray[indexPath.row].urlToImage ?? "https://kvant63.ru/-imager/?m=1&src=data/catalog/Бастион/TEPLOCOM-300+/teplocom-500-4.jpg") else {return UITableViewCell()}
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 print(error)
@@ -97,11 +97,28 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let shareAction = UIContextualAction(style: .normal, title: "Share", handler: {(data, value, sth) in
+            let cell = tableView.cellForRow(at: indexPath) as! CustomTableViewCell
+            
+            let text = "NEWS: " + self.allNewsArray[indexPath.row].url
+            let image = cell.newsImage.image
+            let all = UIActivityViewController(activityItems: [text, image as Any], applicationActivities: nil)
+            self.present(all, animated: true, completion: nil)
+                    
+            sth(true)
+            
+        })
+        shareAction.backgroundColor = UIColor.systemPurple
+        let swipe = UISwipeActionsConfiguration(actions: [shareAction])
+        return swipe
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = SpacificNewsViewController()
         
-        guard let url = URL(string: allNewsArray[indexPath.row].urlToImage) else {return}
+        guard let url = URL(string: allNewsArray[indexPath.row].urlToImage ?? "") else {return}
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 print(error)
